@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio CV</title>
+    <style>
+        :root {
+            --primary: #f8b4d9;
+            --primary-light: #fce7f3;
+            --secondary: #c77dff;
+            --dark: #4a4a4a;
+            --light: #fafafa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 0;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .profile-details h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .profile-details h2 {
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .profile-details p {
+            max-width: 500px;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--primary-light);
+        }
+        
+        .experience-item {
+            display: flex;
+            margin-bottom: 2rem;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .experience-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 0;
+            background-color: var(--primary-light);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .experience-details {
+            flex-grow: 1;
+        }
+        
+        .experience-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .experience-details h5 {
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .experience-details p {
+            font-size: 0.95rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill {
+            background-color: var(--primary-light);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Hobbies styles */
+        .hobbies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .hobby-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hobby-image {
+            height: 150px;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hobby-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to top, rgba(248, 180, 217, 0.3), transparent);
+        }
+        
+        .hobby-content {
+            padding: 1rem;
+        }
+        
+        .hobby-content h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .hobby-content p {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-top: 2px solid var(--primary-light);
+            color: var(--dark);
+        }
+        
+        @media (max-width: 768px) {
+            .experience-item {
+                flex-direction: column;
+            }
+            
+            .experience-image {
+                width: 100%;
+                height: 150px;
+                margin-bottom: 1rem;
+            }
+            
+            .hobbies-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <div class="profile-image">Your Profile Image</div>
+            <div class="profile-details">
+                <h1>Your Name</h1>
+                <h2>Your Profession</h2>
+                <p>Brief professional bio highlighting your expertise, passion, and what makes you unique. Keep it concise but impactful.</p>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Email</a>
+                    <a href="#">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h3>Éducation</h3>
+            
+            <div class="experience-item">
+                <div class="experience-image">University Logo</div>
+                <div class="experience-details">
+                    <h4>Degree Name</h4>
+                    <h5>University Name • Graduation Year</h5>
+                    <p>Brief description of your studies, notable courses, research, or academic achievements. Include relevant extracurricular activities if applicable.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-image">School Logo</div>
+                <div class="experience-details">
+                    <h4>Previous Degree</h4>
+                    <h5>School Name • Graduation Year</h5>
+                    <p>Description of your studies and academic achievements. Mention any honors, scholarships, or special projects completed.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h3>Projects</h3>
+            
+            <div class="experience-item">
+                <div class="experience-image">Project Image</div>
+                <div class="experience-details">
+                    <h4>Project Name</h4>
+                    <h5>Technologies Used</h5>
+                    <p>Description of the project, your role, challenges overcome, and results achieved. Include links to live demos or repositories if available.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-image">Project Image</div>
+                <div class="experience-details">
+                    <h4>Another Project</h4>
+                    <h5>Technologies Used</h5>
+                    <p>Overview of project scope, implementation details, and impact. Highlight any unique aspects or innovative solutions you contributed.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-image">Project Image</div>
+                <div class="experience-details">
+                    <h4>Third Project</h4>
+                    <h5>Technologies Used</h5>
+                    <p>Brief description of your work, the problem you solved, and the outcome. Mention any recognition received or metrics that demonstrate success.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h3>Certification</h3>
+            
+            <div class="experience-item">
+                <div class="experience-image">Cert Logo</div>
+                <div class="experience-details">
+                    <h4>Certification Name</h4>
+                    <h5>Issuing Organization • Year</h5>
+                    <p>Brief description of the certification, skills validated, and relevance to your field. Mention if it's an industry-standard certification.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-image">Cert Logo</div>
+                <div class="experience-details">
+                    <h4>Another Certification</h4>
+                    <h5>Issuing Organization • Year</h5>
+                    <p>Overview of what you learned and how it has enhanced your professional capabilities. Include verification links if applicable.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h3>Skills</h3>
+            
+            <div class="skills">
+                <div class="skill">Web Development</div>
+                <div class="skill">UX/UI Design</div>
+                <div class="skill">Project Management</div>
+                <div class="skill">Content Strategy</div>
+                <div class="skill">SEO</div>
+                <div class="skill">Digital Marketing</div>
+                <div class="skill">React</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">HTML/CSS</div>
+                <div class="skill">Photography</div>
+                <div class="skill">Adobe Creative Suite</div>
+                <div class="skill">User Research</div>
+                <div class="skill">Data Analysis</div>
+                <div class="skill">Agile Methodology</div>
+            </div>
+        </section>
+        
+        <section>
+            <h3>Hobbies</h3>
+            
+            <div class="hobbies-container">
+                <div class="hobby-card">
+                    <div class="hobby-image">Photography</div>
+                    <div class="hobby-content">
+                        <h4>Photography</h4>
+                        <p>Brief description of your photography style, favorite subjects, or what you enjoy about this hobby.</p>
+                    </div>
+                </div>
+                
+                <div class="hobby-card">
+                    <div class="hobby-image">Travel</div>
+                    <div class="hobby-content">
+                        <h4>Travel</h4>
+                        <p>Favorite destinations, memorable experiences, or what traveling means to you personally.</p>
+                    </div>
+                </div>
+                
+                <div class="hobby-card">
+                    <div class="hobby-image">Reading</div>
+                    <div class="hobby-content">
+                        <h4>Reading</h4>
+                        <p>Preferred genres, favorite authors, or how reading influences your professional perspective.</p>
+                    </div>
+                </div>
+                
+                <div class="hobby-card">
+                    <div class="hobby-image">Cooking</div>
+                    <div class="hobby-content">
+                        <h4>Cooking</h4>
+                        <p>Cuisines you enjoy preparing, signature dishes, or why you find cooking creative and fulfilling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2025 Your Name | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
